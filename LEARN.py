@@ -7,3 +7,43 @@
 2019.04.14 第十二章涉外经济法12/24
 2019.04.16 第十二章涉外经济法 看完
 2019.04.17 第十二章国有企业法11/22
+
+
+
+Sub testUnion()
+lRow = Cells(Rows.Count, 1).End(xlUp).Row
+Dim rng As Range
+Dim rng1 As Range
+Dim rng2 As Range
+
+Dim a(0 To 99999) As Integer
+Dim b As Long
+b = 0
+a(1) = 0
+
+Set rng1 = Cells(lRow, 1)
+For i = 1 To lRow Step 1
+    If Cells(i, 1) = "奥迪" Then
+        a(b) = i
+        b = b + 1
+    End If
+Next
+
+For bb = 0 To b Step 1
+    If a(bb) <> 0 Then
+        If bb = 0 Then
+            Set rng1 = Cells(a(bb), 1)
+            Set rng = Union(rng1, rng1)
+        Else
+            Set rng1 = Cells(a(bb), 1)
+            Set rng = Union(rng, rng1)
+        End If
+    
+        
+    End If
+Next
+
+rng.Select
+
+End Sub
+
